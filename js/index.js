@@ -2,7 +2,9 @@ $(document).ready(function() {
 	$("#searchButton").on('click', function(e) {
 		e.preventDefault();
 		$(this).toggleClass("btn-primary");
-		$(this).html("Loading");
+		$(this).val("Loading");
+		$('#searchResults').empty();
+		$(this).attr("disabled", true);
 		var wordsToSearch = $('#searchText').val();
 		var cb = '&callback=?';
 		console.log(wordsToSearch);
@@ -20,7 +22,8 @@ $(document).ready(function() {
 			},
 			complete: function(xhr, status) {
 				$("#searchButton").toggleClass("btn-primary");
-				$("#searchButton").html("Search");
+				$("#searchButton").val("Search");
+				$("#searchButton").attr("disabled", false);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log("Error: " + jqXHR.status + " - " + errorThrown);
