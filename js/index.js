@@ -1,9 +1,8 @@
 $(document).ready(function() {
 	$("#searchButton").on('click', function(e) {
 		e.preventDefault();
-		$(this).toggleClass("btn-primary");
-		$(this).html("Loading");
-		var wordsToSearch = $('#searchTxt').val();
+
+		var wordsToSearch = $('#searchText').val();
 		var cb = '&callback=?';
 		console.log(wordsToSearch);
 		var api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
@@ -19,8 +18,7 @@ $(document).ready(function() {
 				});
 			},
 			complete: function(xhr, status) {
-				$("#searchButton").toggleClass("btn-primary");
-				$("#searchButton").html("Search");
+
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log("Error: " + jqXHR.status + " - " + errorThrown);
