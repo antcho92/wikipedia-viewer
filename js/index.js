@@ -17,7 +17,8 @@ $(document).ready(function() {
 				var results = data.query.pages;
 				console.log(results);
 				$.each(data.query.pages,function(i, page) {
-					$('#searchResults').append("<h4>" + page.title + "</h4> <li>" + page.extract + "</li>");
+					var resultsDiv = "<div> <h4>" + page.title + "</h4> <li>" + page.extract + "</li></div>";
+					$('#searchResults').append(resultsDiv);
 				});
 			},
 			complete: function(xhr, status) {
