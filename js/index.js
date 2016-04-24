@@ -13,7 +13,6 @@ $(document).ready(function() {
 		//Creates a variable of the text that was put into the search bar
 		var wordsToSearch = $('#searchText').val();
 		var cb = '&callback=?';
-		console.log(wordsToSearch);
 		var api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
 		//My ajax call to wikipedia
 		$.ajax({
@@ -24,9 +23,10 @@ $(document).ready(function() {
 			success: function(data) {
 				//var results = data.query.pages;
 				//console.log(results);
-				$.each(data.query.pages,function(i, page) {
-					var resultsDiv = "<a href='http://en.wikipedia.org/?curid=" + page.pageid + "> <div> <h4>" + page.title + "</h4> <li>" + page.extract + "</li></div></a>";
+				$.each(data.query.pages, function(i, page) {
+					var resultsDiv = "<a href='http://en.wikipedia.org/?curid=" + page.pageid + "\'> <div> <h4>" + page.title + "</h4> <li>" + page.extract + "</li></div></a>";
 					$('#searchResults').append(resultsDiv);
+					console.log(resultsDiv);
 				});
 			},
 			//Function called at completion to change back color, text, and clickability of search button
